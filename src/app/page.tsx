@@ -3,6 +3,8 @@ import { ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/navbar";
 import { createSlug } from "@/lib/utils";
+import { products } from "@/lib/mock-data";
+import ProductCard from "@/components/product-card";
 
 export default function Home() {
   return (
@@ -46,6 +48,27 @@ export default function Home() {
 
         {/* Decorative Elements */}
         <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-slate-600 to-transparent"></div>
+      </section>
+
+      {/* Featured Products Section */}
+      <section className="bg-slate-800/30 py-16">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-7xl">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold text-white mb-4">
+                Öne Çıkan Endüstriyel Çözümler
+              </h2>
+              <p className="text-slate-400 max-w-2xl mx-auto">
+                Güvenliğiniz için özenle seçilmiş premium ürünler
+              </p>
+            </div>
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              {products.slice(0, 4).map((product) => (
+                <ProductCard key={product.id} product={product} />
+              ))}
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* Product Categories Section */}

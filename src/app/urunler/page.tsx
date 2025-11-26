@@ -2,75 +2,12 @@
 
 import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
-import { products, CATEGORIES, BRANDS, filterProducts, type Product } from "@/lib/mock-data";
+import { products, CATEGORIES, BRANDS, filterProducts } from "@/lib/mock-data";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/navbar";
 import { slugToCategory } from "@/lib/utils";
-
-// Format price to Turkish Lira
-function formatPrice(price: number): string {
-  return new Intl.NumberFormat("tr-TR", {
-    style: "currency",
-    currency: "TRY",
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 0,
-  }).format(price);
-}
-
-// Product Card Component
-function ProductCard({ product }: { product: Product }) {
-  return (
-    <div className="group rounded-lg border border-slate-700 bg-slate-900/50 p-6 transition-all hover:border-orange-500/50 hover:bg-slate-900">
-      {/* Brand - Small gray text above product name */}
-      <p className="mb-1 text-xs text-slate-500">{product.brand}</p>
-
-      {/* Product Name */}
-      <h3 className="mb-2 text-lg font-semibold text-white group-hover:text-orange-500 transition-colors">
-        {product.name}
-      </h3>
-
-      {/* Category */}
-      <p className="mb-3 text-sm text-slate-400">{product.category}</p>
-
-      {/* Fabric Type Badge (if applicable) */}
-      {product.fabricType && (
-        <div className="mb-3">
-          <span
-            className={`inline-block rounded-full px-3 py-1 text-xs font-medium ${
-              product.fabricType === "Nomex"
-                ? "bg-red-600/20 text-red-400"
-                : "bg-blue-600/20 text-blue-400"
-            }`}
-          >
-            {product.fabricType}
-          </span>
-        </div>
-      )}
-
-      {/* Features */}
-      <ul className="mb-4 space-y-1">
-        {product.features.slice(0, 3).map((feature, index) => (
-          <li key={index} className="text-sm text-slate-300">
-            • {feature}
-          </li>
-        ))}
-        {product.features.length > 3 && (
-          <li className="text-sm text-slate-400">
-            +{product.features.length - 3} özellik daha
-          </li>
-        )}
-      </ul>
-
-      {/* Price */}
-      <div className="mt-auto pt-4 border-t border-slate-700">
-        <p className="text-xl font-bold text-orange-500">
-          {formatPrice(product.price)}
-        </p>
-      </div>
-    </div>
-  );
-}
+import ProductCard from "@/components/product-card";
 
 export default function UrunlerPage() {
   const searchParams = useSearchParams();

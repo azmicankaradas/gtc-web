@@ -41,10 +41,10 @@ export const products: Product[] = [
   // Coveralls (Tulum) - Nomex
   {
     id: "1",
-    name: "Nomex Tulum Pro",
+    name: "Nomex Tulum",
     brand: "Delta Plus",
     category: "Koruyucu Teknik Giysiler & Aksesuarlar",
-    features: ["FR kumaş", "CE sertifikalı", "Çoklu cepler"],
+    features: ["FR kumaş", "CE sertifikalı", "Çoklu cepler", "Reflektör bantlar"],
     price: 3500,
     fabricType: "Nomex",
   },

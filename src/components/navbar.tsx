@@ -18,15 +18,17 @@ export default function Navbar() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-20 items-center justify-between">
           {/* Logo */}
-          <Link href="/">
-            <div className="relative h-10 w-auto sm:h-12">
+          <Link href="/" className="group flex items-center">
+            <div className="relative h-16 w-auto sm:h-20 transition-transform duration-300 hover:scale-105">
+              <div className="absolute inset-0 rounded-lg bg-gradient-to-br from-orange-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-sm"></div>
               <Image
                 src="/logo.png"
                 alt="GTC Endüstriyel"
-                width={120}
-                height={48}
-                className="h-full w-auto object-contain"
+                width={180}
+                height={80}
+                className="h-full w-auto object-contain drop-shadow-lg brightness-110 contrast-110 group-hover:brightness-125 transition-all duration-300"
                 priority
+                quality={95}
               />
             </div>
           </Link>
